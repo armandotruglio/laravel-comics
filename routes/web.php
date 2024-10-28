@@ -23,4 +23,17 @@ Route::get('/comics', function() {
     // dd($comics);
 
     return view('comics.index', compact("comics"));
-});
+})->name("comics.index");
+
+Route::get('/comics/{index}', function (string $index) {
+    $comics = config("comics");
+
+    if(isset($comics[$index])) {
+        $comic = $comics[$index];
+
+        return view("comics.show", compact("comic"));
+    } else {
+        abort(404);
+    }
+
+})->name("comics.show");

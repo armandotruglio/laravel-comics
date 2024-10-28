@@ -1,32 +1,27 @@
 @extends('layouts.app')
 
-@section("page-title", "Comics")
+@section("page-title", $comic["title"])
 
-@section("main-content")
-<main>
+
+@section('main-content')
+
+<div class="main">
     <div class="container">
-        <div class="row">
-            @forelse ($comics as $comic)
-            <div class="col-3">
+        <div class="row justify-content-center">
+            <div class="col-5 text-center">
                 <div class="card">
-                    <a href="{{ route("comics.show", $loop->index) }}">
                         <div class="card-image">
                             <img src="{{ $comic["thumb"] }}" class="card-img-top" alt="{{ $comic["title"] }}">
                         </div>
-                    </a>
                         <div class="card-body">
                             <p class="card-title fw-bold">{{ $comic["title"] }}</p>
-                            <p class="card-text text-truncate">{{ $comic["description"] }}</p>
+                            <p class="card-text">{{ $comic["description"] }}</p>
                         </div>
                 </div>
-
             </div>
-
-            @empty
-
-            @endforelse
         </div>
     </div>
-</main>
-@endsection
 
+</div>
+
+@endsection
