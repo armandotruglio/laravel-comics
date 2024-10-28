@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.home');
 });
+
+Route::get('/comics', function() {
+    //< recuperare i miei dati
+    $comics = config("comics");
+    // dd($comics);
+
+    return view('comics.index', compact("comics"));
+});
